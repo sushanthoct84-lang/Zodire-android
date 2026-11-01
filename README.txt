@@ -1,13 +1,19 @@
-ZODIRE NATIVE ANDROID HOME SCREEN PATCH
+ZODIRE ANDROID PATCH
 
-Files:
-- app/src/main/java/com/zodire/app/MainActivity.kt
-- app/build.gradle.kts
-- app/src/main/res/drawable-nodpi/zodire_logo.png
-- app/src/main/res/drawable-nodpi/zodire_wheel_half_speed.gif
+This patch contains the native Android welcome/preview screen and the Gradle settings fix.
 
-Apply to the existing Zodire-android project by replacing the matching MainActivity.kt and app/build.gradle.kts files, and copying the two drawable assets into the matching drawable-nodpi folder. Keep the existing project-level Gradle files and AndroidManifest.xml.
+Copy/replace these files in the root of the GitHub repository:
+1. settings.gradle.kts
+2. .github/workflows/android-ci.yml
+3. app/src/main/java/com/zodire/app/MainActivity.kt
+4. app/src/main/res/drawable-nodpi/zodire_logo.png
+5. app/src/main/res/drawable-nodpi/zodire_wheel_half_speed.gif
 
-The wheel GIF is the supplied animation re-encoded at half speed and reduced to 480x480 for a smaller app asset. The supplied original Zodire logo is included as a transparent PNG.
+Keep the existing root build.gradle.kts and app/build.gradle.kts. The existing app dependencies already include
+Jetpack Compose Material 3 and Glide, which this screen uses.
 
-The Home screen's sample preview fields are UI only. The live matching/backend flow is not implemented by this patch. The Continue button currently displays a clear beta notice rather than pretending that matching is live.
+Then commit the changes to the main branch. GitHub Actions should start automatically.
+The APK artifact is named zodire-debug-apk. Download it only after the workflow completes successfully.
+
+The preview form currently displays a preparation notice. It is a UI preview only: live user accounts,
+Kundli calculation, matching, swipe profiles, and backend services are not implemented by this patch.
